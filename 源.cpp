@@ -76,7 +76,7 @@ bool LinkList::isEmpty() {
 //clear a list
 void LinkList::clearList() {
 	NodeNum = 0;
-	head = NULL;
+	head->setNext(NULL);
 }
 //destroy a list
 LinkList::~LinkList() {
@@ -139,9 +139,14 @@ int LinkList::deleteNode(int i) {
 	return OK;
 }
 void LinkList::display() {
+	if (NodeNum == 0 ) {
+		cout << "there's no data!!";
+		return;
+	}
 	LinkNode* p = this->head;
 	if (!p->getNext()) {
 		cout << "there's no data!!";
+		return;
 	}
 	while (p->getNext()) {
 		p = p->getNext();
@@ -160,4 +165,8 @@ int main(int argc, char* argv[]) {
 	cout << endl;
 	L.deleteNode(2);
 	L.display();
+	L.clearList();
+	cout << endl;
+	L.display();
+
 }
